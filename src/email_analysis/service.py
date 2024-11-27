@@ -70,7 +70,7 @@ class RAGApplication:
 
 
 
-def email_analysis():
+def run_email_analysis() -> str:
     # Initialize the RAG application
     rag_application = RAGApplication(retriever, rag_chain)
     # Example usage
@@ -78,6 +78,7 @@ def email_analysis():
     answer = rag_application.run(question)
     print("Question:", question)
     print("Answer:", answer)
+    return answer
 
-if __name__ == "__main__":
-    email_analysis()
+# if __name__ == "__main__":
+#     email_analysis()
