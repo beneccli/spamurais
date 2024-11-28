@@ -7,6 +7,7 @@ from langchain_community.vectorstores import SKLearnVectorStore
 from langchain_ollama import ChatOllama
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from .models import StartEmailAnalysisPayload
 
 # List of URLs to load documents from
 urls = [
@@ -70,7 +71,10 @@ class RAGApplication:
 
 
 
-def run_email_analysis() -> str:
+def run_email_analysis(payload: StartEmailAnalysisPayload) -> str:
+    recipient_email = payload.email
+    email_content = payload.content
+    
     # Initialize the RAG application
     rag_application = RAGApplication(retriever, rag_chain)
     # Example usage
@@ -78,7 +82,4 @@ def run_email_analysis() -> str:
     answer = rag_application.run(question)
     print("Question:", question)
     print("Answer:", answer)
-    return answer
-
-# if __name__ == "__main__":
-#     email_analysis()
+    return {"message": f"Email sent to {recipient_email} with content analysis result: {answer}"}
