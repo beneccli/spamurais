@@ -3,8 +3,6 @@ from .models import StartEmailAnalysisPayload
 from .prompts.rag_keywords_chain import rag_keywords_chain
 from .prompts.final_answer_chain import final_answer_chain
 from src.llm import llm
-from langchain_core.output_parsers import StrOutputParser
-
 
 def run_email_analysis(payload: StartEmailAnalysisPayload) -> str:
     recipient_email = payload.email
