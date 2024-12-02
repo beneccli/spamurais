@@ -16,6 +16,7 @@ import { NotificationComponent } from '../components/notification.component';
         <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
+        <!-- <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
@@ -27,8 +28,7 @@ import { NotificationComponent } from '../components/notification.component';
         <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
-        <app-notification text="Report expected by end of month"></app-notification>
-        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification> -->
       </div>
     </div>
   `,

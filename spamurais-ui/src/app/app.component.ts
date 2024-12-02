@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { BehaviorSubject, debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   template: `
-    <div class="fixed inset-x-0 inset-y-24">
+    <div
+      class="fixed inset-x-0 top-24"
+      [class.bottom-24]="isContainerMaxHeightReached"
+    >
       <div
         class="max-w-lg mx-auto h-full overflow-auto bg-white dark:bg-zinc-700 border rounded-lg shadow-lg border-zinc-100 dark:border-zinc-600"
         #scrollContainer
@@ -42,11 +46,52 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     </div>
   `
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'spamurais-ui';
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
   @ViewChild('stickyElement') stickyElement!: ElementRef;
   isFixed = false;
+  isContainerMaxHeightReached = false;
+  isContainerMaxHeightReached$ = new Subject<boolean>();
+
+  private resizeObserver!: ResizeObserver;
+
+  constructor(private cdr: ChangeDetectorRef) {
+    this.isContainerMaxHeightReached$
+      .pipe(debounceTime(50))
+      .subscribe((value) => {
+        this.isContainerMaxHeightReached = value;
+      });
+    this.isContainerMaxHeightReached$.next(false);
+  }
+
+  @HostListener('window:resize', [])
+  onWindowResize(): void {
+    const containerHeight = this.scrollContainer.nativeElement.offsetHeight;
+    const windowMaxHeight = window.innerHeight - 96*2;
+    const result = containerHeight >= windowMaxHeight;
+    this.isContainerMaxHeightReached$.next(result);
+  }
+
+  ngAfterViewInit(): void {
+    this.resizeObserver = new ResizeObserver((entries) => {
+      if (!this.isContainerMaxHeightReached) {
+        for (let entry of entries) {
+          const height = entry.contentRect.height;
+          const result = height >= window.innerHeight - 96*2;
+          this.isContainerMaxHeightReached$.next(result);
+        }
+      }
+    });
+
+    this.resizeObserver.observe(this.scrollContainer.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+  }
 
   calculateIfMenuTabsIsFixed(_: Event) {
     const scrollContainer = this.scrollContainer.nativeElement as HTMLElement;
