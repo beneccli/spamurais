@@ -93,3 +93,47 @@ local_settings.py
 # Anaconda environments
 *.conda
 *.ipynb_checkpoints/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# Angular (in spamurais-ui subfolder)
+spamurais-ui/.angular/
+spamurais-ui/.angular-cache/
+spamurais-ui/coverage/
+spamurais-ui/dist/
+spamurais-ui/tmp/
+spamurais-ui/*.log
+spamurais-ui/.sass-cache/
+spamurais-ui/*.map
+
+# Compiled Typescript
+spamurais-ui/*.tsbuildinfo
+
+# Optional npm cache directory
+.npm/
+
+# Generated Angular CLI files
+spamurais-ui/*.map
+
+# Logs
+logs/
+*.log
+logs/*
+
+# Temporary files
+*.temp
+*.tmp
+
+# Debug logs
+debug.log
+debug/
+
+# OS-generated files
+*.DS_Store
+.Spotlight-V100
+.Trashes
