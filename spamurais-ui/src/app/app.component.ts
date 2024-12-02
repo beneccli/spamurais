@@ -14,17 +14,17 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
         <div class="flex w-full rounded-md bg-zinc-100 dark:bg-zinc-800">
           <a class="block w-1/3 m-1 font-light text-center"
               routerLink="/alerts"
-              routerLinkActive="bg-white rounded-md shadow dark:bg-zinc-700"
+              routerLinkActive="bg-white rounded-md shadow dark:bg-zinc-700 font-medium"
               ariaCurrentWhenActive="page"
           >Alerts</a>
           <a class="block w-1/3 m-1 font-light text-center"
               routerLink="/important"
-              routerLinkActive="bg-white rounded-md shadow dark:bg-zinc-700"
+              routerLinkActive="bg-white rounded-md shadow dark:bg-zinc-700 font-medium"
               ariaCurrentWhenActive="page"
           >Important</a>
           <a class="block w-1/3 m-1 font-light text-center"
               routerLink="/archived"
-              routerLinkActive="bg-white rounded-md shadow dark:bg-zinc-700"
+              routerLinkActive="bg-white rounded-md shadow dark:bg-zinc-700 font-medium"
               ariaCurrentWhenActive="page"
           >Archived</a>
         </div>
