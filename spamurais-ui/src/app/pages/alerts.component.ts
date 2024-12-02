@@ -12,6 +12,23 @@ import { NotificationComponent } from '../components/notification.component';
       <div class="bg-zinc-100 dark:bg-zinc-800 p-2 rounded-lg">
         <app-notification text="Update your password by end of week"></app-notification>
         <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
+        <app-notification text="Report expected by end of month"></app-notification>
       </div>
     </div>
   `,
